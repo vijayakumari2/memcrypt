@@ -1,0 +1,20 @@
+{
+  "name": "memcrypt-saas-controlplane",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/appnetwise/memcrypt-saas-controlplane",
+  "author": "Rashid Ali <rashid.ali@carbonplace.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn workspace frontend dev\" \"cd packages/backend && venv\\Scripts\\activate && uvicorn main:app --reload\"",
+    "build": "yarn workspace frontend build && cd packages/backend && python setup.py build",
+    "start": "yarn workspace frontend start && cd packages/backend && uvicorn main:app"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
